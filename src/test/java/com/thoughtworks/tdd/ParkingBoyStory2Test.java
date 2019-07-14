@@ -69,6 +69,17 @@ public class ParkingBoyStory2Test {
         Assertions.assertNotNull(fetchTicket);
         Assertions.assertSame("",parkingBoy.getMessage());
 
+
+        for(int i = 0;i < 10;i++){
+            Car car = new Car();
+            parkingBoy.parkCar(car);
+        }
+
+        Ticket fetchTicket2 = parkingBoy.parkCar(new Car());
+
+        Assertions.assertNull(fetchTicket2);
+        Assertions.assertSame("Not enough position.",parkingBoy.getMessage());
+
     }
 
 }

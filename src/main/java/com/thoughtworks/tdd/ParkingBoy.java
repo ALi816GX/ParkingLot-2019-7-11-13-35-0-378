@@ -68,7 +68,9 @@ public class ParkingBoy {
 
 
     public void addparkingLot(){
-        this.parkingLot2 = new ParkingLot();
+        if(this.parkingLot2 == null) {
+            this.parkingLot2 = new ParkingLot();
+        }
     }
 
 
