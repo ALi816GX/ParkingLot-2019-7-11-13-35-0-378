@@ -63,6 +63,7 @@ public class ParkingBoyStory1Test {
 
     @Test
     public void should_return_null_when_call_fetch_given_no_ticket () {
+
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();

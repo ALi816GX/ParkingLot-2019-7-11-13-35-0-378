@@ -12,6 +12,7 @@ package com.thoughtworks.tdd;
 public class ParkingBoy {
 
     private ParkingLot parkingLot;
+    private String message = "";
 
 
     public ParkingBoy(ParkingLot parkingLot) {
@@ -28,10 +29,21 @@ public class ParkingBoy {
 
     public Car fetchCar(Ticket ticket) {
 
-        return parkingLot.fetchCar(ticket);
+        Car car = parkingLot.fetchCar(ticket);
+
+        if(ticket == null || car == null ){
+            this.message = "Unrecognized parking ticket.";
+        }
+
+        return car;
 
     }
 
 
+    public String getMessage() {
+        String message = this.message;
+        this.message = "";
+        return message;
+    }
 
 }
