@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * @Time:17:43
  * @description:
  */
-public class PakingBoyTest {
+public class PakingBoyStory1Test {
 
     @Test
     public void should_return_car_when_fetch_car_given_have_ticket_by_parking_the_car() {
