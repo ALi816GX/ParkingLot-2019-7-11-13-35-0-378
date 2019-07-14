@@ -23,6 +23,12 @@ public class ParkingBoy {
 
     public Ticket parkCar(Car car){
 
+        if(parkingLot.map.size() == 10){
+            this.message = "Not enough position.";
+        }else {
+            this.message = "";
+        }
+
         return parkingLot.parkCar(car);
 
     }
@@ -33,7 +39,8 @@ public class ParkingBoy {
 
         if(ticket == null){
             this.message = "Please provide your parking ticket.";
-        } else if( car == null ){
+        }
+        else if( car == null ){
             this.message = "Unrecognized parking ticket.";
         }
 

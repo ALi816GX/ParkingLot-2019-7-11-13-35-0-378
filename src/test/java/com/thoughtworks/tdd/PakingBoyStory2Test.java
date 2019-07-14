@@ -52,6 +52,26 @@ public class PakingBoyStory2Test {
     }
 
 
+    @Test
+    public void should_return_Error_Text_when_call_park_car_where_was_enough_given_car(){
+
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        for(int i = 0;i < 10;i++){
+            Car car = new Car();
+            parkingBoy.parkCar(car);
+        }
+
+        Ticket fetchTicket = parkingBoy.parkCar(new Car());
+
+        Assertions.assertNull(fetchTicket);
+        Assertions.assertSame("Not enough position.",parkingBoy.getMessage());
+
+    }
+
+
 
 
 
