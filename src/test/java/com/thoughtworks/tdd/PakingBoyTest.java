@@ -26,8 +26,13 @@ public class PakingBoyTest {
         Car car2 = new Car();
         Ticket ticket1 = pakingBoy.parkCar(car1);
         Ticket ticket2 = pakingBoy.parkCar(car2);
+        Ticket ticket3 = new Ticket();
 
         //when
+
+        Car fetchedCar3 = pakingBoy.fetchCar(ticket3);
+        Car fetchedCar4 = pakingBoy.fetchCar(null);
+
         Car fetchedCar1 = pakingBoy.fetchCar(ticket1);
         Car fetchedCar2 = pakingBoy.fetchCar(ticket2);
 
@@ -35,6 +40,8 @@ public class PakingBoyTest {
         //Then
         Assertions.assertSame(car1,fetchedCar1);
         Assertions.assertSame(car2,fetchedCar2);
+        Assertions.assertSame(null,fetchedCar3);
+        Assertions.assertSame(null,fetchedCar4);
 
 
     }
