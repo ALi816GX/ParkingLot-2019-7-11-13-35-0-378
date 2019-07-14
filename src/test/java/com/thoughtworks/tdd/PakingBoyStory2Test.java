@@ -9,4 +9,9 @@ package com.thoughtworks.tdd;
  * @description:
  */
 public class PakingBoyStory2Test {
+
+
+
+
+
 }

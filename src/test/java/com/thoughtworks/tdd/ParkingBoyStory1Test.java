@@ -12,15 +12,76 @@ import org.junit.jupiter.api.Test;
  * @Time:17:43
  * @description:
  */
-public class PakingBoyStory1Test {
+public class ParkingBoyStory1Test {
+
 
     @Test
-    public void should_return_car_when_fetch_car_given_have_ticket_by_parking_the_car() {
+    public void should_return_car_when_call_fetch_given_ticket_from_park() {
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+
+        Ticket ticket = parkingBoy.parkCar(car);
+
+        Car fetchedCar = parkingBoy.fetchCar(ticket);
+
+        Assertions.assertSame(fetchedCar, car);
+    }
+
+    @Test
+    public void should_return_right_car_when_call_fetch_given_multiply_tickets_from_park() {
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        Ticket ticket1 = parkingBoy.parkCar(car1);
+        Ticket ticket2 = parkingBoy.parkCar(car2);
+
+
+        Car fetchedCar1 = parkingBoy.fetchCar(ticket1);
+        Car fetchedCar2 = parkingBoy.fetchCar(ticket2);
+
+        Assertions.assertSame(fetchedCar1, car1);
+        Assertions.assertSame(fetchedCar2, car2);
+
+    }
+
+    @Test
+    public void should_return_null_when_call_fetch_given_wrong_ticket () {
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+
+        Ticket ticket = parkingBoy.parkCar(car);
+
+        Car fetchCar = parkingBoy.fetchCar(new Ticket());
+
+        Assertions.assertNull(fetchCar);
+
+    }
+
+    @Test
+    public void should_return_null_when_call_fetch_given_no_ticket () {
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+
+        Ticket ticket = parkingBoy.parkCar(car);
+
+        Car actual = parkingBoy.fetchCar(null);
+
+        Assertions.assertNull(actual);
+
+    }
+
+    @Test
+    public void should_return_null_when_call_park_while_parkingLot_is_full_given_car() {
 
 
         //given
-        PakingLot pakingLot = new PakingLot();
-        PakingBoy pakingBoy = new PakingBoy(pakingLot);
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
 
         Ticket ticketTemp = null;
@@ -28,13 +89,13 @@ public class PakingBoyStory1Test {
         //when
         for(int i = 0;i < 10;i++){
             Car car = new Car();
-            ticketTemp = pakingBoy.parkCar(car);
+            ticketTemp = parkingBoy.parkCar(car);
         }
 
-        Ticket ticket_11 = pakingBoy.parkCar(new Car());
+        Ticket ticket_11 = parkingBoy.parkCar(new Car());
 
-        pakingBoy.fetchCar(ticketTemp);
-        Ticket ticket_12 = pakingBoy.parkCar(new Car());
+        parkingBoy.fetchCar(ticketTemp);
+        Ticket ticket_12 = parkingBoy.parkCar(new Car());
 
 
 

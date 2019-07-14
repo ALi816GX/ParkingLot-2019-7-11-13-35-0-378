@@ -1,8 +1,6 @@
 package com.thoughtworks.tdd;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +11,7 @@ import java.util.Map;
  * @Time:17:36
  * @description:
  */
-public class PakingLot {
+public class ParkingLot {
 
 
     Map<Ticket,Car> map = new HashMap<>(10);
@@ -34,7 +32,11 @@ public class PakingLot {
 
     public Car fetchCar(Ticket ticket) {
 
-        return map.remove(ticket);
+        Car car = map.get(ticket);
+
+        map.remove(ticket);
+
+        return car;
 
     }
 

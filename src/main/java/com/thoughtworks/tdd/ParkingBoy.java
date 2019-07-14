@@ -9,26 +9,26 @@ package com.thoughtworks.tdd;
  * @Time:17:36
  * @description:
  */
-public class PakingBoy {
+public class ParkingBoy {
 
-    private PakingLot pakingLot;
+    private ParkingLot parkingLot;
 
 
-    public PakingBoy(PakingLot pakingLot) {
+    public ParkingBoy(ParkingLot parkingLot) {
 
-        this.pakingLot = pakingLot;
+        this.parkingLot = parkingLot;
 
     }
 
     public Ticket parkCar(Car car){
 
-        return pakingLot.parkCar(car);
+        return parkingLot.parkCar(car);
 
     }
 
     public Car fetchCar(Ticket ticket) {
 
-        return pakingLot.fetchCar(ticket);
+        return parkingLot.fetchCar(ticket);
 
     }
 
