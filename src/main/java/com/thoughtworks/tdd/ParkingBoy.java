@@ -12,6 +12,7 @@ package com.thoughtworks.tdd;
 public class ParkingBoy {
 
     private ParkingLot parkingLot;
+    private ParkingLot parkingLot2;
     private String message = "";
 
 
@@ -23,13 +24,19 @@ public class ParkingBoy {
 
     public Ticket parkCar(Car car){
 
+        Ticket ticket = null;
+
         if(parkingLot.map.size() == 10){
             this.message = "Not enough position.";
-        }else {
+            addparkingLot();
+            ticket = parkingLot2.parkCar(car);
+        }
+        else {
             this.message = "";
+            ticket = parkingLot.parkCar(car);
         }
 
-        return parkingLot.parkCar(car);
+        return ticket;
 
     }
 
@@ -54,5 +61,11 @@ public class ParkingBoy {
         this.message = "";
         return message;
     }
+
+
+    public void addparkingLot(){
+        this.parkingLot2 = new ParkingLot();
+    }
+
 
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @Time:21:24
  * @description:
  */
-public class PakingBoyStory2Test {
+public class ParkingBoyStory2Test {
 
     @Test
     public void should_return_Error_Text_when_call_fetch_given_used_ticket_or_null() {
@@ -70,6 +70,8 @@ public class PakingBoyStory2Test {
         Assertions.assertSame("Not enough position.",parkingBoy.getMessage());
 
     }
+
+
 
 
 
