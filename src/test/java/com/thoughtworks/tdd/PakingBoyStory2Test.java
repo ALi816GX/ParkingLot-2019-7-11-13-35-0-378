@@ -27,9 +27,27 @@ public class PakingBoyStory2Test {
         Assertions.assertSame("Unrecognized parking ticket.",parkingBoy.getMessage());
 
 
+//        Car fetchCarWithNullTicket = parkingBoy.fetchCar(null);
+//        Assertions.assertNull(fetchCarWithNullTicket);
+//        Assertions.assertSame("Unrecognized parking ticket.",parkingBoy.getMessage());
+
+    }
+
+
+
+    @Test
+    public void should_return_Error_Text_when_call_fetch_given_null_ticket() {
+
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        Ticket ticket = parkingBoy.parkCar(new Car());
+        parkingBoy.fetchCar(ticket);
+
+
         Car fetchCarWithNullTicket = parkingBoy.fetchCar(null);
         Assertions.assertNull(fetchCarWithNullTicket);
-        Assertions.assertSame("Unrecognized parking ticket.",parkingBoy.getMessage());
+        Assertions.assertSame("Please provide your parking ticket.",parkingBoy.getMessage());
 
     }
 
