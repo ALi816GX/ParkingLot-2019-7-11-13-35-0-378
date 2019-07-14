@@ -21,16 +21,20 @@ public class PakingBoyTest {
         //given
         PakingLot pakingLot = new PakingLot();
         PakingBoy pakingBoy = new PakingBoy(pakingLot);
-        Car car = new Car();
-        Ticket ticket = pakingBoy.parkCar(car);
+
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = pakingBoy.parkCar(car1);
+        Ticket ticket2 = pakingBoy.parkCar(car2);
 
         //when
-        Car fetchedCar = pakingBoy.fetchCar(ticket);
+        Car fetchedCar1 = pakingBoy.fetchCar(ticket1);
+        Car fetchedCar2 = pakingBoy.fetchCar(ticket2);
 
 
         //Then
-        Assertions.assertSame(car,fetchedCar);
-
+        Assertions.assertSame(car1,fetchedCar1);
+        Assertions.assertSame(car2,fetchedCar2);
 
 
     }

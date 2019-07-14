@@ -1,5 +1,10 @@
 package com.thoughtworks.tdd;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created with IDEA
  *
@@ -10,9 +15,7 @@ package com.thoughtworks.tdd;
  */
 public class PakingLot {
 
-    public String parkingCar(Car car){
-        return "";
-    }
+
 
 
 }
