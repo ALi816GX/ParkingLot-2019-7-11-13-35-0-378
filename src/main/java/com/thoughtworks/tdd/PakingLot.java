@@ -41,11 +41,12 @@ public class PakingLot {
 
     public Car fetchCar(Ticket ticket) {
 
-        if(ticket == this.ticket){
+        if(this.ticket == ticket ){
+            this.ticket = null;
             return this.car;
         }
         else if(ticket == this.ticket2){
-            this.car = null;
+            this.ticket2 = null;
             return this.car2;
         }
         else {
