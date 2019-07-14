@@ -41,4 +41,35 @@ public class ParkingBoyStory6Test {
 
 
     }
+
+
+    @Test
+    public void should_return_message_when_call_park_car_by_different_boy_given_car(){
+
+        ServiceManager serviceManager = new ServiceManager();
+
+        //given
+        ParkingBoy parkingBoy= serviceManager.getParkingBoy();
+
+        for(int i = 0;i < 10;i++){
+            Car car = new Car();
+            parkingBoy.parkCar(car);
+        }
+
+        Ticket fetchTicket = parkingBoy.parkCar(new Car());
+
+        Assertions.assertNotNull(fetchTicket);
+        Assertions.assertSame("",parkingBoy.getMessage());
+
+
+        for(int i = 0;i < 10;i++){
+            Car car = new Car();
+            parkingBoy.parkCar(car);
+        }
+
+        Ticket fetchTicket2 = parkingBoy.parkCar(new Car());
+
+        Assertions.assertNull(fetchTicket2);
+        Assertions.assertSame("Not enough position.",parkingBoy.getMessage());
+    }
 }
