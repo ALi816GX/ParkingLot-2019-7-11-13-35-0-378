@@ -22,21 +22,25 @@ public class PakingBoyTest {
         PakingLot pakingLot = new PakingLot();
         PakingBoy pakingBoy = new PakingBoy(pakingLot);
 
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Ticket ticket1 = pakingBoy.parkCar(car1);
-        Ticket ticket2 = pakingBoy.parkCar(car2);
+
+        Ticket ticketTemp = null;
 
         //when
+        for(int i = 0;i < 10;i++){
+            Car car = new Car();
+            ticketTemp = pakingBoy.parkCar(car);
+        }
 
-        Car fetchedCar1 = pakingBoy.fetchCar(ticket1);
-        Car fetchedCar2 = pakingBoy.fetchCar(ticket1);
+        Ticket ticket_11 = pakingBoy.parkCar(new Car());
+
+        pakingBoy.fetchCar(ticketTemp);
+        Ticket ticket_12 = pakingBoy.parkCar(new Car());
+
 
 
         //Then
-        Assertions.assertSame(car1,fetchedCar1);
-        Assertions.assertSame(null,fetchedCar2);
-
+        Assertions.assertSame(null,ticket_11);
+        Assertions.assertSame(ticket_12!=null,true);
 
     }
 

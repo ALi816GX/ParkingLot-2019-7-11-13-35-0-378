@@ -16,44 +16,27 @@ import java.util.Map;
 public class PakingLot {
 
 
-    private Car car;
-    private Car car2;
-    private Ticket ticket;
-    private Ticket ticket2;
+    Map<Ticket,Car> map = new HashMap<>(10);
 
 
     public Ticket parkCar(Car car){
 
-        if(this.car == null) {
-            this.car = car;
-            this.ticket = new Ticket();
-            return this.ticket;
+        Ticket ticket = null;
+
+        if(map.size() <= 9){
+            ticket = new Ticket();
+            map.put(ticket,car);
         }
 
-        else{
-            this.car2 = car;
-            this.ticket2 = new Ticket();
-            return this.ticket2;
-        }
-
+        return ticket;
 
     }
 
     public Car fetchCar(Ticket ticket) {
 
-        if(this.ticket == ticket ){
-            this.ticket = null;
-            return this.car;
-        }
-        else if(ticket == this.ticket2){
-            this.ticket2 = null;
-            return this.car2;
-        }
-        else {
-            return null;
-        }
-    }
+        return map.remove(ticket);
 
+    }
 
 
 
