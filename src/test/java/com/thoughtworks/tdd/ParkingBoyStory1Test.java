@@ -101,8 +101,8 @@ public class ParkingBoyStory1Test {
 
 
         //Then
-        Assertions.assertSame(null,ticket_11);
-        Assertions.assertSame(ticket_12!=null,true);
+        Assertions.assertSame(ticket_11 != null,true);
+        Assertions.assertSame(ticket_12 != null,true);
 
     }
 

@@ -24,12 +24,16 @@ public class ParkingBoy {
 
     public Ticket parkCar(Car car){
 
-        Ticket ticket = null;
+        Ticket ticket;
 
         if(parkingLot.map.size() == 10){
-            this.message = "Not enough position.";
             addparkingLot();
             ticket = parkingLot2.parkCar(car);
+
+            if(parkingLot2!=null&&parkingLot2.map.size()==10){
+                this.message = "Not enough position.";
+            }
+
         }
         else {
             this.message = "";
