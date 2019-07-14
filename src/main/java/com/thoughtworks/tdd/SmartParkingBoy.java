@@ -24,13 +24,6 @@ public class SmartParkingBoy{
         parkingLotList.add(new ParkingLot());
     }
 
-    public List<ParkingLot> getParkingLotList() {
-        return parkingLotList;
-    }
-
-    public void setParkingLotList(List<ParkingLot> parkingLotList) {
-        this.parkingLotList = parkingLotList;
-    }
 
     public Ticket parkCar(Car car) {
         int index = 0;
