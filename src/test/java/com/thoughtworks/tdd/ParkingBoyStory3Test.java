@@ -26,7 +26,7 @@ public class ParkingBoyStory3Test {
             parkingBoy.parkCar(car);
         }
 
-        parkingBoy.addparkingLot();
+//        parkingBoy.addparkingLot();
 
         Ticket fetchTicket = parkingBoy.parkCar(new Car());
 

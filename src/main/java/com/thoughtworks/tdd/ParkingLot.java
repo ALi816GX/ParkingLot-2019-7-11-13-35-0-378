@@ -41,11 +41,26 @@ public class ParkingLot {
 
     }
 
+    public Map<Ticket, Car> getCarsMap() {
+        return map;
+    }
+
+
+    public int getCarsAcutalCapacity(){
+        return map.size();
+    }
+
+    public void setMap(Map<Ticket, Car> map) {
+        this.map = map;
+    }
+
     public int getCapacity() {
         return capacity;
     }
 
+
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
 }

@@ -17,6 +17,7 @@ public class ParkingBoyStory1Test {
 
     @Test
     public void should_return_car_when_call_fetch_given_ticket_from_park() {
+
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
@@ -101,7 +102,7 @@ public class ParkingBoyStory1Test {
 
 
         //Then
-        Assertions.assertSame(ticket_11 != null,true);
+        Assertions.assertSame(ticket_11 == null,true);
         Assertions.assertSame(ticket_12 != null,true);
 
     }
