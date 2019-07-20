@@ -11,42 +11,25 @@ import java.util.List;
  * @Time:00:06
  * @description:
  */
-public class SmartParkingBoy{
+public class SmartParkingBoy extends ParkingBoy{
 
-    private List<ParkingLot> parkingLotList;
 
     public SmartParkingBoy(ParkingLot parkingLot) {
-        parkingLotList = new ArrayList<>();
-        parkingLotList.add(parkingLot);
-    }
-
-    public void addParkingLot() {
-        parkingLotList.add(new ParkingLot());
+        super(parkingLot);
     }
 
 
+    @Override
     public Ticket parkCar(Car car) {
+
         int index = 0;
-        int max_empty_postion = 0;
-        int i = 0;
-        for (ParkingLot parkingLot:parkingLotList) {
-            if(parkingLot.map.size()<=max_empty_postion){
-                max_empty_postion = parkingLot.map.size();
+        for (int i = 0; i < getList().size(); i++) {
+            if (getList().get(i).getCarsAcutalCapacity() < getList().get(index).getCarsAcutalCapacity()) {
                 index = i;
             }
-            i++;
         }
-        return parkingLotList.get(index).parkCar(car);
+
+        return getList().get(index).parkCar(car);
     }
 
-    public int getParkingLotIndexByTicket(Ticket ticket) {
-        int index = -1;
-        for (int i = 0;i < parkingLotList.size();i++) {
-            if(parkingLotList.get(i).map.containsKey(ticket)){
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
 }

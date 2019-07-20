@@ -17,6 +17,14 @@ public class ParkingLot {
 
     Map<Ticket,Car> map = new HashMap<>(capacity);
 
+    public ParkingLot() {
+
+    }
+
+
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
 
     public Ticket parkCar(Car car){
 
@@ -39,6 +47,10 @@ public class ParkingLot {
 
         return car;
 
+    }
+
+    public boolean isCapacityFull(){
+        return this.map.size() >= this.capacity;
     }
 
     public Map<Ticket, Car> getCarsMap() {

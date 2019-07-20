@@ -26,7 +26,7 @@ public class ParkingBoyStory5Test {
             superSmartParkingBoy.parkCar(car);
         }
 
-        superSmartParkingBoy.addParkingLot();
+        superSmartParkingBoy.addPakinglot(new ParkingLot(6));
 
         Ticket fetchTicket = superSmartParkingBoy.parkCar(new Car());
 

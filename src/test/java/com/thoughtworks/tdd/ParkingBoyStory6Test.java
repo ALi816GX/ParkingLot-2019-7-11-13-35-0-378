@@ -13,63 +13,63 @@ import org.junit.jupiter.api.Test;
  */
 public class ParkingBoyStory6Test {
 
+
     @Test
-    public void should_park_into__parkingLot_when_call_park_car_by_different_boy_given_car() {
+    public void should_parkingboy_specified_to_park_when_manager_call_park_given_car () {
 
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager manager = new ServiceManager();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
 
-        Car car = new Car();
-        Ticket ticket = serviceManager.parkingBoy.parkCar(car);
-        Car fetchedCar = serviceManager.parkingBoy.fetchCar(ticket);
-        Assertions.assertSame(fetchedCar, car);
+        manager.addManagementList(smartParkingBoy);
+        manager.addManagementList(superSmartParkingBoy);
 
-        //-------//
+        manager.specify(superSmartParkingBoy);
 
+        manager.parkCar(new Car());
 
-        SmartParkingBoy smartParkingBoy = serviceManager.smartParkingBoy;
-
-        for(int i = 0;i < 3;i++){
-            Car car1 = new Car();
-            smartParkingBoy.parkCar(car1);
-        }
-
-        smartParkingBoy.addParkingLot();
-
-        Ticket fetchTicket = smartParkingBoy.parkCar(new Car());
-
-        Assertions.assertSame(1,smartParkingBoy.getParkingLotIndexByTicket(fetchTicket));
+        Assertions.assertEquals(manager.getSpecifiedBoy().getList().get(0).getCarsAcutalCapacity(), 1);
 
 
     }
 
+    @Test
+    public void should_parking_to_the_second_parking_lot_when_manager_call_parkByself_given_the_first_is_full () {
+        ServiceManager manager = new ServiceManager();
+
+
+        manager.addPakinglot(new ParkingLot());
+        manager.addPakinglot(new ParkingLot());
+
+        for (int i = 0; i < 12; i++) {
+            manager.parkByself(new Car());
+        }
+
+        int actual = manager.getProxyBoy().getList().get(1).getCarsAcutalCapacity();
+
+        Assertions.assertEquals(actual, 2);
+    }
+//
 
     @Test
-    public void should_return_message_when_call_park_car_by_different_boy_given_car(){
+    public void shoule_return_null_and_print_not_enough_position_when_manager_call_park_given_10_cars_already_in_parkinglot () {
+        ServiceManager manager = new ServiceManager();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
 
-        ServiceManager serviceManager = new ServiceManager();
+        manager.addManagementList(parkingBoy);
+        manager.addManagementList(smartParkingBoy);
+        manager.addManagementList(superSmartParkingBoy);
 
-        //given
-        ParkingBoy parkingBoy= serviceManager.getParkingBoy();
+        manager.specify(parkingBoy);
 
-        for(int i = 0;i < 10;i++){
-            Car car = new Car();
-            parkingBoy.parkCar(car);
+        for (int i = 0; i < 10; i++) {
+            manager.parkCar(new Car());
         }
 
-        Ticket fetchTicket = parkingBoy.parkCar(new Car());
-
-        Assertions.assertNotNull(fetchTicket);
-        Assertions.assertSame("",parkingBoy.getMessage());
-
-
-        for(int i = 0;i < 10;i++){
-            Car car = new Car();
-            parkingBoy.parkCar(car);
-        }
-
-        Ticket fetchTicket2 = parkingBoy.parkCar(new Car());
-
-        Assertions.assertNull(fetchTicket2);
-        Assertions.assertSame("Not enough position.",parkingBoy.getMessage());
+        Ticket ticket = manager.parkCar(new Car());
+        Assertions.assertNull(ticket);
+        Assertions.assertEquals("Not enough position.",manager.getSpecifiedBoy().getMessage());
     }
 }

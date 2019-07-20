@@ -22,14 +22,10 @@ public class ParkingBoyStory2Test {
         Ticket ticket = parkingBoy.parkCar(new Car());
         parkingBoy.fetchCar(ticket);
 
+
         Car fetchCarWithUsedTicket = parkingBoy.fetchCar(ticket);
         Assertions.assertNull(fetchCarWithUsedTicket);
         Assertions.assertSame("Unrecognized parking ticket.",parkingBoy.getMessage());
-
-
-//        Car fetchCarWithNullTicket = parkingBoy.fetchCar(null);
-//        Assertions.assertNull(fetchCarWithNullTicket);
-//        Assertions.assertSame("Unrecognized parking ticket.",parkingBoy.getMessage());
 
     }
 
@@ -58,17 +54,6 @@ public class ParkingBoyStory2Test {
         //given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-
-        for(int i = 0;i < 10;i++){
-            Car car = new Car();
-            parkingBoy.parkCar(car);
-        }
-
-        Ticket fetchTicket = parkingBoy.parkCar(new Car());
-
-        Assertions.assertNotNull(fetchTicket);
-        Assertions.assertSame("",parkingBoy.getMessage());
-
 
         for(int i = 0;i < 10;i++){
             Car car = new Car();

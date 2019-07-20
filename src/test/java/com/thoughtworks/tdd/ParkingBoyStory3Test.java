@@ -26,11 +26,15 @@ public class ParkingBoyStory3Test {
             parkingBoy.parkCar(car);
         }
 
-//        parkingBoy.addparkingLot();
-
         Ticket fetchTicket = parkingBoy.parkCar(new Car());
 
-        Assertions.assertSame(fetchTicket != null,true);
+        Assertions.assertNull(fetchTicket);
+
+        parkingBoy.addPakinglot(new ParkingLot());
+
+        Ticket fetchTicket2 = parkingBoy.parkCar(new Car());
+
+        Assertions.assertNotNull(fetchTicket2);
 
     }
 

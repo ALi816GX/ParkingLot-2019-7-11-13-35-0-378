@@ -1,5 +1,8 @@
 package com.thoughtworks.tdd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IDEA
  *
@@ -10,33 +13,40 @@ package com.thoughtworks.tdd;
  */
 public class ServiceManager {
 
-    ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
-    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot());
-    SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
+    private List<ParkingBoy> parkingBoyList;
+    private ParkingBoy specifiedBoy;
+    private ParkingBoy proxyBoy = new ParkingBoy(new ParkingLot());
 
-
-    public ParkingBoy getParkingBoy() {
-        return parkingBoy;
+    public ServiceManager() {
+        parkingBoyList = new ArrayList<>();
     }
 
-    public void setParkingBoy(ParkingBoy parkingBoy) {
-        this.parkingBoy = parkingBoy;
+    public void addManagementList (ParkingBoy boy) {
+        parkingBoyList.add(boy);
     }
 
 
-    public SmartParkingBoy getSmartParkingBoy() {
-        return smartParkingBoy;
+    public void specify(ParkingBoy parkingBoy) {
+        specifiedBoy = parkingBoy;
     }
 
-    public void setSmartParkingBoy(SmartParkingBoy smartParkingBoy) {
-        this.smartParkingBoy = smartParkingBoy;
+    public Ticket parkCar(Car car) {
+        return specifiedBoy.parkCar(car);
     }
 
-    public SuperSmartParkingBoy getSuperSmartParkingBoy() {
-        return superSmartParkingBoy;
+    public Ticket parkByself (Car car) {
+        return  proxyBoy.parkCar(car);
     }
 
-    public void setSuperSmartParkingBoy(SuperSmartParkingBoy superSmartParkingBoy) {
-        this.superSmartParkingBoy = superSmartParkingBoy;
+    public ParkingBoy getSpecifiedBoy() {
+        return specifiedBoy;
+    }
+
+    public ParkingBoy getProxyBoy() {
+        return proxyBoy;
+    }
+
+    public void addPakinglot(ParkingLot parkingLot){
+        proxyBoy.addPakinglot(parkingLot);
     }
 }

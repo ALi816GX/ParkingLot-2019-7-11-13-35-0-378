@@ -21,16 +21,16 @@ public class ParkingBoyStory4Test {
         ParkingLot parkingLot = new ParkingLot();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
 
-        for(int i = 0;i < 3;i++){
-            Car car = new Car();
-            smartParkingBoy.parkCar(car);
+        for (int i = 0; i < 7; i++) {
+            smartParkingBoy.parkCar(new Car());
+
+        }
+        smartParkingBoy.addPakinglot(new ParkingLot());
+        for (int i = 0; i < 2; i++) {
+            smartParkingBoy.parkCar(new Car());
         }
 
-        smartParkingBoy.addParkingLot();
-
-        Ticket fetchTicket = smartParkingBoy.parkCar(new Car());
-
-        Assertions.assertSame(1,smartParkingBoy.getParkingLotIndexByTicket(fetchTicket));
+        Assertions.assertSame(2,smartParkingBoy.getList().get(1).getCarsAcutalCapacity());
 
     }
 

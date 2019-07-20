@@ -1,6 +1,9 @@
 package com.thoughtworks.tdd;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IDEA
  *
@@ -11,25 +14,48 @@ package com.thoughtworks.tdd;
  */
 public class ParkingBoy {
 
-    private ParkingLot parkingLot;
+    private List<ParkingLot> list = new ArrayList<>();
     private String message = "";
 
 
     public ParkingBoy(ParkingLot parkingLot) {
 
-        this.parkingLot = parkingLot;
+        list.add(parkingLot);
 
     }
 
     public Ticket parkCar(Car car){
 
-        return this.parkingLot.parkCar(car);
+        ParkingLot choose = list.get(0);
+        boolean isAllFull = true;
+        for(ParkingLot parkingLot:list){
+            if(!parkingLot.isCapacityFull()){
+                isAllFull = false;
+                choose = parkingLot;
+                break;
+            }
+        }
+
+        if(isAllFull){
+            message = "Not enough position.";
+        }
+
+        return choose.parkCar(car);
 
     }
 
     public Car fetchCar(Ticket ticket) {
 
-        Car car = parkingLot.fetchCar(ticket);
+        Car car = null;
+
+        for(ParkingLot parkingLot:list){
+            Car temp  = parkingLot.fetchCar(ticket);
+            if(temp != null){
+                car = temp;
+                break;
+            }
+
+        }
 
         if(ticket == null){
             this.message = "Please provide your parking ticket.";
@@ -42,6 +68,9 @@ public class ParkingBoy {
 
     }
 
+    public void addPakinglot(ParkingLot parkingLot){
+        list.add(parkingLot);
+    }
 
     public String getMessage() {
 
@@ -51,5 +80,11 @@ public class ParkingBoy {
 
     }
 
+    public List<ParkingLot> getList() {
+        return list;
+    }
 
+    public void setList(List<ParkingLot> list) {
+        this.list = list;
+    }
 }
