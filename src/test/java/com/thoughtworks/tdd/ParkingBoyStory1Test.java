@@ -29,6 +29,8 @@ public class ParkingBoyStory1Test {
         Assertions.assertSame(fetchedCar, car);
     }
 
+
+
     @Test
     public void should_return_right_car_when_call_fetch_given_multiply_tickets_from_park() {
         ParkingLot parkingLot = new ParkingLot();

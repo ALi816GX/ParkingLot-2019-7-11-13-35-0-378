@@ -49,10 +49,12 @@ public class ParkingBoyStory6Test {
 
         Assertions.assertEquals(actual, 2);
     }
-//
+
+
 
     @Test
     public void shoule_return_null_and_print_not_enough_position_when_manager_call_park_given_10_cars_already_in_parkinglot () {
+
         ServiceManager manager = new ServiceManager();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot());
@@ -71,5 +73,8 @@ public class ParkingBoyStory6Test {
         Ticket ticket = manager.parkCar(new Car());
         Assertions.assertNull(ticket);
         Assertions.assertEquals("Not enough position.",manager.getSpecifiedBoy().getMessage());
+
     }
+
+
 }
